@@ -3,6 +3,7 @@
 """
 AI 配图生成器
 根据文章内容自动生成配图，使用 ModelScope Z-Image-Turbo 模型
+风格：摄影写实风格，4K 高质量，专业摄影
 """
 
 import requests
@@ -131,11 +132,11 @@ class AICoverGenerator:
 
     def _build_prompt(self, title_keywords: str, content_keywords: list) -> str:
         """构建配图提示词"""
-        # 根据关键词构建专业的配图提示词
+        # 根据关键词构建摄影写实风格的配图提示词
         base_styles = [
-            "A professional business illustration",
-            "Modern infographic style",
-            "Clean and elegant design"
+            "Photorealistic style, professional photography",
+            "Cinematic photography, high detail",
+            "Realistic photo, natural lighting"
         ]
 
         style = base_styles[0]
@@ -146,15 +147,15 @@ class AICoverGenerator:
             for kw in content_keywords[:2]:
                 # 简单映射
                 mapping = {
-                    '贸易': 'trade',
-                    '战争': 'war',
+                    '贸易': 'international trade',
+                    '战争': 'war conflict',
                     '经济': 'economy',
                     '陶瓷': 'ceramics',
-                    '出口': 'export',
-                    '进口': 'import',
+                    '出口': 'export business',
+                    '进口': 'import trade',
                     '科技': 'technology',
                     '教育': 'education',
-                    '健康': 'health',
+                    '健康': 'healthcare',
                     '环境': 'environment',
                     '交通': 'transportation',
                     '金融': 'finance',
@@ -166,13 +167,13 @@ class AICoverGenerator:
                 keywords_en.append(mapping.get(kw, kw))
 
             if keywords_en:
-                theme = f"showing {' and '.join(keywords_en)}"
+                theme = f"featuring {' and '.join(keywords_en)}"
             else:
-                theme = f"related to {title_keywords}"
+                theme = f"featuring {title_keywords}"
         else:
-            theme = f"related to {title_keywords}"
+            theme = f"featuring {title_keywords}"
 
-        prompt = f"{style}, {theme}, business infographic style, professional and modern"
+        prompt = f"{style}, {theme}, 4K quality, sharp focus, professional photography, cinematic lighting"
 
         return prompt
 

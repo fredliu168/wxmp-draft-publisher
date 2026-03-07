@@ -10,7 +10,7 @@ description: This skill should be used when the user needs to create drafts, upd
 ## 🎯 主要特性
 
 - ✅ **多公众号支持** - 管理多个公众号账号
-- ✅ **AI 自动配图** - 根据文章内容生成配图
+- ✅ **AI 自动配图** - 摄影写实风格，根据文章内容生成配图
 - ✅ **默认封面降级** - 未配置 AI 时使用默认封面
 - ✅ **Markdown 格式化** - 自动转换为优美的 HTML
 - ✅ **标准尺寸调整** - 自动调整为微信封面 900 × 383 像素
